@@ -4,7 +4,8 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
 const image1 = new Image();
-image1.src = 'img/logo.jpeg';
+image1.src = '';
+
 inputSlider.addEventListener('change', handleSlider);
 
 class Cell {
@@ -16,7 +17,7 @@ class Cell {
 	}
 	draw(ctx) {
 		ctx.fillStyle = 'white';
-		ctx.fillText(this.symbol, this.x + 1, this.y + 1);
+		ctx.fillText(this.symbol, this.x + 0.5, this.y + 0.5);
 
 		ctx.fillStyle = this.color;
 		ctx.fillText(this.symbol, this.x, this.y);
@@ -38,53 +39,18 @@ class AsciiEffect {
 	}
 	#convertToSymbol(g) {
 		if (g > 250) return '$';
-		else if (g > 245) return '@';
-		else if (g > 240) return 'B';
-		else if (g > 235) return '%';
-		else if (g > 230) return '8';
-		else if (g > 225) return '&';
-		else if (g > 220) return 'W';
-		else if (g > 225) return 'M';
-		else if (g > 220) return '#';
-		else if (g > 215) return '*';
-		else if (g > 210) return 'o';
-		else if (g > 205) return 'a';
-		else if (g > 200) return 'h';
-		else if (g > 195) return 'k';
-		else if (g > 190) return 'b';
-		else if (g > 185) return 'd';
-		else if (g > 180) return 'p';
-		else if (g > 175) return 'q';
-		else if (g > 170) return 'w';
-		else if (g > 165) return 'm';
-		else if (g > 160) return 'Z';
-		else if (g > 155) return 'O';
-		else if (g > 150) return '0';
-		else if (g > 145) return 'Q';
-		else if (g > 140) return 'L';
-		else if (g > 135) return 'C';
-		else if (g > 130) return 'J';
-		else if (g > 125) return 'U';
-		else if (g > 120) return 'Y';
-		else if (g > 115) return 'X';
-		else if (g > 105) return 'z';
-		else if (g > 100) return 'c';
-		else if (g > 95) return 'v';
-		else if (g > 90) return 'u';
-		else if (g > 85) return 'n';
-		else if (g > 80) return 'x';
-		else if (g > 75) return 'r';
-		else if (g > 70) return 'j';
-		else if (g > 65) return 'f';
-		else if (g > 60) return 't';
-		else if (g > 55) return '/';
-		else if (g > 50) return '\\';
-		else if (g > 45) return '|';
-		else if (g > 40) return '(';
-		else if (g > 35) return ')';
-		else if (g > 30) return '1';
-		else if (g > 25) return '{';
-		else if (g > 20) return '}';
+		else if (g > 240) return '@';
+		else if (g > 220) return 'B';
+		else if (g > 200) return '%';
+		else if (g > 180) return '8';
+		else if (g > 160) return '&';
+		else if (g > 140) return 'W';
+		else if (g > 120) return 'M';
+		else if (g > 100) return '#';
+		else if (g > 80) return '*';
+		else if (g > 60) return 'o';
+		else if (g > 40) return 'a';
+		else if (g > 20) return 'h';
 		else return '';
 	}
 	#scanImage(cellSize) {
@@ -128,7 +94,7 @@ function handleSlider() {
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 	} else {
 		inputLabel.innerHTML = 'Resolution: ' + inputSlider.value + ' px';
-		ctx.font = parseInt(inputSlider.value) + 'px Courier New';
+		ctx.font = parseInt(inputSlider.value) + 'px Verdana';
 		effect.draw(parseInt(inputSlider.value));
 	}
 }
@@ -138,11 +104,6 @@ image1.onload = function initialize() {
 
 	canvas.width = image1.width;
 	canvas.height = image1.height;
-	ctx.drawImage(image1, 0, 0);
-
-	const base64Image = canvas.toDataURL('img/logo.jpeg');
-	console.log('Base64 image:', base64Image);
-
 	effect = new AsciiEffect(ctx, image1.width, image1.height);
 	//effect.draw(parseInt(inputSlider.value));
 	handleSlider();

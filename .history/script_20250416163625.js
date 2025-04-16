@@ -4,8 +4,7 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
 const image1 = new Image();
-image1.src = 'img/logo.jpeg';
-inputSlider.addEventListener('change', handleSlider);
+image1.src = inputSlider.addEventListener('change', handleSlider);
 
 class Cell {
 	constructor(x, y, symbol, color) {
@@ -140,7 +139,7 @@ image1.onload = function initialize() {
 	canvas.height = image1.height;
 	ctx.drawImage(image1, 0, 0);
 
-	const base64Image = canvas.toDataURL('img/logo.jpeg');
+	const base64Image = canvas.toDataURL('image/png');
 	console.log('Base64 image:', base64Image);
 
 	effect = new AsciiEffect(ctx, image1.width, image1.height);

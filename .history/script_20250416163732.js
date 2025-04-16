@@ -140,7 +140,7 @@ image1.onload = function initialize() {
 	canvas.height = image1.height;
 	ctx.drawImage(image1, 0, 0);
 
-	const base64Image = canvas.toDataURL('img/logo.jpeg');
+	const base64Image = canvas.toDataURL('image/png');
 	console.log('Base64 image:', base64Image);
 
 	effect = new AsciiEffect(ctx, image1.width, image1.height);
