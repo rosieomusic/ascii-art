@@ -4,30 +4,22 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
 const image1 = new Image();
-image1.src = 'img/alfi.png';
+image1.src = 'img/roseomalleyheadshot2.png';
 inputSlider.addEventListener('change', handleSlider);
 
 class Cell {
-	constructor(x, y, symbol, color, size) {
+	constructor(x, y, symbol, color) {
 		this.x = x;
 		this.y = y;
 		this.symbol = symbol;
 		this.color = color;
-		this.size = size;
-		this.padding = this.size * 0.2;
 	}
 	draw(ctx) {
-		ctx.font = `${this.size * 2}'Courier'`;
 		ctx.fillStyle = 'white';
-		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
+		ctx.fillText(this.symbol, this.x + 1, this.y + 1);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x, this.y);
 	}
 }
 class AsciiEffect {
@@ -45,37 +37,55 @@ class AsciiEffect {
 		console.log(this.#pixels.data);
 	}
 	#convertToSymbol(g) {
-		const asciiGradient =
-			'$@B%8&WM#*oakhbdpqwmZO0QCLJUYXzcvunxrjft/|)(1}{][?-_+~i!lI;:,"^`.';
-		const index = Math.floor((g / 255) * (asciiGradient.length - 1));
-		return asciiGradient[index];
+		if (g > 250) return '$';
+		else if (g > 240) return 'B';
+		else if (g > 230) return '8';
+		else if (g > 220) return 'W';
+		else if (g > 220) return '#';
+		else if (g > 210) return 'o';
+		else if (g > 200) return 'h';
+		else if (g > 190) return 'b';
+		else if (g > 180) return 'p';
+		else if (g > 170) return 'w';
+		else if (g > 160) return 'Z';
+		else if (g > 150) return '0';
+		else if (g > 140) return 'L';
+		else if (g > 130) return 'J';
+		else if (g > 120) return 'Y';
+		else if (g > 115) return 'X';
+		else if (g > 100) return 'c';
+		else if (g > 90) return 'u';
+		else if (g > 80) return 'x';
+		else if (g > 70) return 'j';
+		else if (g > 65) return 'f';
+		else if (g > 60) return 't';
+		else if (g > 55) return '/';
+		else if (g > 50) return '\\';
+		else if (g > 45) return '|';
+		else if (g > 40) return '(';
+		else if (g > 35) return ')';
+		else if (g > 30) return '1';
+		else if (g > 25) return '{';
+		else if (g > 20) return '}';
+		else return '';
 	}
-
 	#scanImage(cellSize) {
 		this.#imageCellArray = [];
-		const stepX = Math.floor(cellSize / 3);
-		const stepY = cellSize;
-		for (let y = 0; y < this.#pixels.height; y += stepY) {
-			for (let x = 0; x < this.#pixels.width; x += stepX) {
-				if (x >= this.#pixels.width || y >= this.#pixels.height) continue;
+		for (let y = 0; y < this.#pixels.height; y += cellSize) {
+			for (let x = 0; x < this.#pixels.width; x += cellSize) {
 				const posX = x * 4;
 				const posY = y * 4;
-				const pos = (y * this.#pixels.width + x) * 4;
+				const pos = posY * this.#pixels.width + posX;
 
 				if (this.#pixels.data[pos + 3] > 128) {
 					const red = this.#pixels.data[pos];
 					const green = this.#pixels.data[pos + 1];
 					const blue = this.#pixels.data[pos + 2];
-					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-
-					//const color = 'yellow';
-					//const color = grayscale > 30 ? 'yellow' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
 					const color = `rgb(${red}, ${green}, ${blue})`;
 					const symbol = this.#convertToSymbol(averageColorValue);
-					if (symbol)
-						this.#imageCellArray.push(new Cell(x, y, symbol, color, cellSize));
+					if (symbol) this.#imageCellArray.push(new Cell(x, y, symbol, color));
 				}
 			}
 		}
@@ -100,7 +110,7 @@ function handleSlider() {
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 	} else {
 		inputLabel.innerHTML = 'Resolution: ' + inputSlider.value + ' px';
-		ctx.font = parseInt(inputSlider.value) * 2 + 'px Courier New';
+		ctx.font = parseInt(inputSlider.value) + 'px Courier New';
 		effect.draw(parseInt(inputSlider.value));
 	}
 }
@@ -112,7 +122,7 @@ image1.onload = function initialize() {
 	canvas.height = image1.height;
 	ctx.drawImage(image1, 0, 0);
 
-	const base64Image = canvas.toDataURL('img/alfi.png');
+	const base64Image = canvas.toDataURL('img/roseomalleyheadshot2.png');
 	console.log('Base64 image:', base64Image);
 
 	effect = new AsciiEffect(ctx, image1.width, image1.height);

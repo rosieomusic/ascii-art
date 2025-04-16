@@ -18,16 +18,11 @@ class Cell {
 	}
 	draw(ctx) {
 		ctx.font = `${this.size * 2}'Courier'`;
-		ctx.fillStyle = 'white';
+		//ctx.fillStyle = 'white';
 		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x + this.padding, this.y + this.padding);
 	}
 }
 class AsciiEffect {
@@ -68,8 +63,8 @@ class AsciiEffect {
 					const blue = this.#pixels.data[pos + 2];
 					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 
-					//const color = 'yellow';
-					//const color = grayscale > 30 ? 'yellow' : 'black';
+					//const color = 'white';
+					//const color = grayscale > 128 ? 'white' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
 					const color = `rgb(${red}, ${green}, ${blue})`;

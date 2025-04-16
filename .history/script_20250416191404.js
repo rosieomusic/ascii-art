@@ -14,7 +14,7 @@ class Cell {
 		this.symbol = symbol;
 		this.color = color;
 		this.size = size;
-		this.padding = this.size * 0.2;
+		this.padding = this.size * 0.05;
 	}
 	draw(ctx) {
 		ctx.font = `${this.size * 2}'Courier'`;

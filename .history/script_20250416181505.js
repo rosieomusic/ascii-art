@@ -4,7 +4,7 @@ const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
 const image1 = new Image();
-image1.src = 'img/alfi.png';
+image1.src = 'img/logo.jpeg';
 inputSlider.addEventListener('change', handleSlider);
 
 class Cell {
@@ -14,20 +14,14 @@ class Cell {
 		this.symbol = symbol;
 		this.color = color;
 		this.size = size;
-		this.padding = this.size * 0.2;
 	}
 	draw(ctx) {
-		ctx.font = `${this.size * 2}'Courier'`;
-		ctx.fillStyle = 'white';
+		ctx.font = `${this.size * 2}px 'Courier New'`;
+		//ctx.fillStyle = 'white';
 		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x, this.y + this.size);
 	}
 }
 class AsciiEffect {
@@ -45,8 +39,7 @@ class AsciiEffect {
 		console.log(this.#pixels.data);
 	}
 	#convertToSymbol(g) {
-		const asciiGradient =
-			'$@B%8&WM#*oakhbdpqwmZO0QCLJUYXzcvunxrjft/|)(1}{][?-_+~i!lI;:,"^`.';
+		const asciiGradient = '@#W$9876543210?!;:+=-,._'; // darkest to lightest
 		const index = Math.floor((g / 255) * (asciiGradient.length - 1));
 		return asciiGradient[index];
 	}
@@ -66,10 +59,6 @@ class AsciiEffect {
 					const red = this.#pixels.data[pos];
 					const green = this.#pixels.data[pos + 1];
 					const blue = this.#pixels.data[pos + 2];
-					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
-
-					//const color = 'yellow';
-					//const color = grayscale > 30 ? 'yellow' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
 					const color = `rgb(${red}, ${green}, ${blue})`;
@@ -112,7 +101,7 @@ image1.onload = function initialize() {
 	canvas.height = image1.height;
 	ctx.drawImage(image1, 0, 0);
 
-	const base64Image = canvas.toDataURL('img/alfi.png');
+	const base64Image = canvas.toDataURL('img/logo.jpeg');
 	console.log('Base64 image:', base64Image);
 
 	effect = new AsciiEffect(ctx, image1.width, image1.height);

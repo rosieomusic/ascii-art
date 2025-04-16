@@ -14,7 +14,7 @@ class Cell {
 		this.symbol = symbol;
 		this.color = color;
 		this.size = size;
-		this.padding = this.size * 0.2;
+		this.padding = this.size * 3;
 	}
 	draw(ctx) {
 		ctx.font = `${this.size * 2}'Courier'`;
@@ -22,12 +22,7 @@ class Cell {
 		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x + this.padding, this.y + this.padding);
 	}
 }
 class AsciiEffect {

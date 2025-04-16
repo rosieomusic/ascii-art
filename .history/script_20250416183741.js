@@ -14,20 +14,14 @@ class Cell {
 		this.symbol = symbol;
 		this.color = color;
 		this.size = size;
-		this.padding = this.size * 0.2;
 	}
 	draw(ctx) {
 		ctx.font = `${this.size * 2}'Courier'`;
-		ctx.fillStyle = 'white';
+		//ctx.fillStyle = 'white';
 		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x, this.y + this.size);
 	}
 }
 class AsciiEffect {
@@ -53,7 +47,7 @@ class AsciiEffect {
 
 	#scanImage(cellSize) {
 		this.#imageCellArray = [];
-		const stepX = Math.floor(cellSize / 3);
+		const stepX = Math.floor(cellSize / 6);
 		const stepY = cellSize;
 		for (let y = 0; y < this.#pixels.height; y += stepY) {
 			for (let x = 0; x < this.#pixels.width; x += stepX) {
@@ -68,8 +62,8 @@ class AsciiEffect {
 					const blue = this.#pixels.data[pos + 2];
 					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 
-					//const color = 'yellow';
-					//const color = grayscale > 30 ? 'yellow' : 'black';
+					//const color = 'white';
+					//const color = grayscale > 128 ? 'white' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
 					const color = `rgb(${red}, ${green}, ${blue})`;

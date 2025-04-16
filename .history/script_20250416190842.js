@@ -22,12 +22,7 @@ class Cell {
 		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
-		ctx.fillText(
-			this.symbol,
-			this.x + this.padding,
-			this.y + this.padding,
-			this.size
-		);
+		ctx.fillText(this.symbol, this.x + this.padding, this.y + this.padding);
 	}
 }
 class AsciiEffect {
