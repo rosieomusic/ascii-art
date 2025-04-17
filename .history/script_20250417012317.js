@@ -17,9 +17,9 @@ class Cell {
 		//this.padding = this.size * 0.2;
 	}
 	draw(ctx) {
-		ctx.font = `${this.size * 2}px Courier New`;
-		//ctx.fillStyle = 'yellow';
-		ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
+		ctx.font = `${this.size * 2}px Times New Roman`;
+		ctx.fillStyle = 'white';
+		//ctx.fillText(this.symbol, this.x + 1, this.y + 1, +this.size);
 
 		ctx.fillStyle = this.color;
 		ctx.fillText(this.symbol, this.x, this.y, this.size);
@@ -38,17 +38,11 @@ class AsciiEffect {
 		this.#height = height;
 		this.#ctx.drawImage(image1, 0, 0, this.#width, this.#height);
 		this.#pixels = this.#ctx.getImageData(0, 0, this.#width, this.#height);
-		//console.log(this.#pixels.data);
+		console.log(this.#pixels.data);
 	}
 	#convertToSymbol(g) {
 		// @#W$9876543210?!abc;:+=-,._
-		// .,:ilwW"
-		// '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`'
-		//`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$
-
-		const asciiGradient =
-			' .`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
-
+		const asciiGradient = '@#W$9876543210?!abc;:+=-,._';
 		const index = Math.floor((g / 255) * (asciiGradient.length - 1));
 		return asciiGradient[index];
 	}
@@ -71,17 +65,17 @@ class AsciiEffect {
 					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 
 					//const color = 'yellow';
-					//const color = grayscale > 110 ? 'white' : 'black';
+					const color = grayscale > 80 ? 'white' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
-					const color = `rgb(${red}, ${green}, ${blue})`;
-					const symbol = this.#convertToSymbol(averageColorValue);
+					//const color = `rgb(${red}, ${green}, ${blue})`;
+					const symbol = this.#convertToSymbol(grayscale);
 					if (symbol)
 						this.#imageCellArray.push(new Cell(x, y, symbol, color, cellSize));
 				}
 			}
 		}
-		//console.log(this.#imageCellArray);
+		console.log(this.#imageCellArray);
 	}
 	#drawAscii() {
 		this.#ctx.clearRect(0, 0, this.#width, this.#height);
@@ -96,7 +90,7 @@ class AsciiEffect {
 }
 let effect;
 function handleSlider() {
-	//console.log('Slider value: ', inputSlider.value);
+	console.log('Slider value: ', inputSlider.value);
 	if (inputSlider.value == 1) {
 		inputLabel.innerHTML = 'Original Image';
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
@@ -107,27 +101,17 @@ function handleSlider() {
 	}
 }
 image1.onload = function initialize() {
-	//console.log('Image loaded: ', image1.src);
-	//console.log('Image dimiensions: ', image1.width, image1.height);
+	console.log('Image loaded: ', image1.src);
+	console.log('Image dimiensions: ', image1.width, image1.height);
 
 	canvas.width = image1.width;
 	canvas.height = image1.height;
 	ctx.drawImage(image1, 0, 0);
 
-	const base64Image = canvas.toDataURL(image1);
-	//console.log('Base64 image:', base64Image);
+	const base64Image = canvas.toDataURL('img/emilyJane.png');
+	console.log('Base64 image:', base64Image);
 
 	effect = new AsciiEffect(ctx, image1.width, image1.height);
 	//effect.draw(parseInt(inputSlider.value));
 	handleSlider();
 };
-const string =
-	'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`';
-
-function reverseString(str) {
-	const reversed = str.split('').reverse().join('');
-	console.log(reversed);
-	return reversed;
-}
-
-reverseString(string);

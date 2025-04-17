@@ -38,16 +38,15 @@ class AsciiEffect {
 		this.#height = height;
 		this.#ctx.drawImage(image1, 0, 0, this.#width, this.#height);
 		this.#pixels = this.#ctx.getImageData(0, 0, this.#width, this.#height);
-		//console.log(this.#pixels.data);
+		console.log(this.#pixels.data);
 	}
 	#convertToSymbol(g) {
 		// @#W$9876543210?!abc;:+=-,._
 		// .,:ilwW"
 		// '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`'
-		//`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$
 
 		const asciiGradient =
-			' .`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
+			'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`';
 
 		const index = Math.floor((g / 255) * (asciiGradient.length - 1));
 		return asciiGradient[index];
@@ -81,7 +80,7 @@ class AsciiEffect {
 				}
 			}
 		}
-		//console.log(this.#imageCellArray);
+		console.log(this.#imageCellArray);
 	}
 	#drawAscii() {
 		this.#ctx.clearRect(0, 0, this.#width, this.#height);
@@ -96,7 +95,7 @@ class AsciiEffect {
 }
 let effect;
 function handleSlider() {
-	//console.log('Slider value: ', inputSlider.value);
+	console.log('Slider value: ', inputSlider.value);
 	if (inputSlider.value == 1) {
 		inputLabel.innerHTML = 'Original Image';
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
@@ -121,13 +120,15 @@ image1.onload = function initialize() {
 	//effect.draw(parseInt(inputSlider.value));
 	handleSlider();
 };
+
 const string =
 	'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`';
+const charArray = string.split('');
 
-function reverseString(str) {
-	const reversed = str.split('').reverse().join('');
-	console.log(reversed);
-	return reversed;
+function reverseString(string) {
+	for (let i = 0; i > charArray.length - 1; i--) {
+		let newString = charArray[i];
+		console.log(newString);
+	}
 }
-
 reverseString(string);

@@ -96,7 +96,7 @@ class AsciiEffect {
 }
 let effect;
 function handleSlider() {
-	//console.log('Slider value: ', inputSlider.value);
+	console.log('Slider value: ', inputSlider.value);
 	if (inputSlider.value == 1) {
 		inputLabel.innerHTML = 'Original Image';
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);

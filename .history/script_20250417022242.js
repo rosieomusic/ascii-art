@@ -38,7 +38,7 @@ class AsciiEffect {
 		this.#height = height;
 		this.#ctx.drawImage(image1, 0, 0, this.#width, this.#height);
 		this.#pixels = this.#ctx.getImageData(0, 0, this.#width, this.#height);
-		//console.log(this.#pixels.data);
+		console.log(this.#pixels.data);
 	}
 	#convertToSymbol(g) {
 		// @#W$9876543210?!abc;:+=-,._
@@ -81,7 +81,7 @@ class AsciiEffect {
 				}
 			}
 		}
-		//console.log(this.#imageCellArray);
+		console.log(this.#imageCellArray);
 	}
 	#drawAscii() {
 		this.#ctx.clearRect(0, 0, this.#width, this.#height);
@@ -96,7 +96,7 @@ class AsciiEffect {
 }
 let effect;
 function handleSlider() {
-	//console.log('Slider value: ', inputSlider.value);
+	console.log('Slider value: ', inputSlider.value);
 	if (inputSlider.value == 1) {
 		inputLabel.innerHTML = 'Original Image';
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
