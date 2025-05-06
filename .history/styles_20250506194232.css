@@ -39,11 +39,9 @@ h1 {
 }
 .controls > label {
 	font-family: Arial, Helvetica, sans-serif;
-	padding-right: 40px;
-
-	white-space: nowrap;
 
 	color: white;
+	padding-right: 10px;
 }
 i {
 	color: #e9ff70;
@@ -95,6 +93,8 @@ i {
 	}
 
 	.controls > label {
-		padding-right: 10px;
+		padding-right: 40px;
+
+		white-space: nowrap;
 	}
 }
