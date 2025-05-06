@@ -73,7 +73,7 @@ i {
 #explaination {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 20px;
-	width: 300px;
+	width: 500px;
 	color: #e9ff70;
 	text-align: center;
 }
@@ -97,8 +97,5 @@ i {
 
 	.controls > label {
 		padding-right: 10px;
-	}
-	#explaination {
-		width: 400px;
 	}
 }

@@ -75,7 +75,6 @@ i {
 	margin: 20px;
 	width: 300px;
 	color: #e9ff70;
-	text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -97,8 +96,5 @@ i {
 
 	.controls > label {
 		padding-right: 10px;
-	}
-	#explaination {
-		width: 400px;
 	}
 }
