@@ -14,9 +14,6 @@ body {
 	padding: 50px;
 	gap: 20px;
 }
-h1 {
-	text-align: center;
-}
 .container {
 	position: relative;
 	justify-content: center;
