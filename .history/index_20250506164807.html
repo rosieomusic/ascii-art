@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE-edge"
+		/>
+		<title>ASCII CONVERTER</title>
+		<link
+			rel="stylesheet"
+			href="styles.css"
+		/>
+		<script
+			src="https://kit.fontawesome.com/56e0d45a0e.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="canvas1"></canvas>
+			<div class="controls">
+				<label
+					for="resolution"
+					id="resolutionLabel"
+					>Resolution 5 px</label
+				>
+				<input
+					type="range"
+					id="resolution"
+					name="resolution"
+					min="1"
+					max="20"
+					value="3"
+				/>
+			</div>
+			<br />
+			<div id="upload">
+				<i class="fa-regular fa-folder-open"></i>
+
+				<input
+					type="file"
+					id="imageUpload"
+					accept="image/*"
+				/>
+				<label
+					for="imageUpload"
+					class="upload-btn"
+					>Upload Image</label
+				>
+				<pre id="ascii-output"></pre>
+				<canvas
+					id="canvas2"
+					style="display: none"
+				></canvas>
+			</div>
+		</div>
+		<div id="explaination">
+			<h1>ASCII ART CONVERTER</h1>
+			<br />
+			<p>
+				ASCII art is a picture made entirely out of text characters instead of
+				pixels. This program scans an image and looks at the brightness and
+				color of each small block of pixels. Then it chooses a letter, symbol,
+				or punctuation mark that best matches how dark or light that block is.
+			</p>
+			<br />
+			<p>The resolution slider controls how detailed the art is.</p>
+			<br />
+			<p>
+				Lower values mean higher detail: smaller blocks, more characters and the
+				ASCII image looks more like the original.
+			</p>
+			<br />
+			<p>
+				Higher values mean lower detail: bigger blocks, fewer characters, and a
+				chunkier or more abstract version of the image
+			</p>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

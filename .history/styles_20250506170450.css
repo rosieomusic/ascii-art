@@ -10,14 +10,13 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 50px;
-	gap: 20px;
+	padding: 20px;
 }
 .container {
 	position: relative;
-	justify-content: center;
-	align-items: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 #canvas1 {
 	border: 5px solid white;

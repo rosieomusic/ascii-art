@@ -84,11 +84,11 @@ class AsciiEffect {
 					const grayscale = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
 
 					//const color = 'yellow';
-					//const color = grayscale > 110 ? 'white' : 'black';
+					const color = grayscale > 110 ? 'white' : 'black';
 					const total = red + green + blue;
 					const averageColorValue = total / 3;
-					const color = `rgb(${red}, ${green}, ${blue})`;
-					const symbol = this.#convertToSymbol(averageColorValue);
+					//const color = `rgb(${red}, ${green}, ${blue})`;
+					const symbol = this.#convertToSymbol(grayscale);
 					if (symbol)
 						this.#imageCellArray.push(new Cell(x, y, symbol, color, cellSize));
 				}

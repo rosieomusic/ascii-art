@@ -1,0 +1,46 @@
+* {
+	margin: 0;
+	padding: 0;
+	/* box-sizing: border-box; */
+}
+body {
+	background: black;
+}
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#canvas1 {
+	border: 5px solid white;
+}
+.controls {
+	display: flex;
+}
+.controls > input {
+	width: 60%;
+}
+.controls > label {
+	font-family: Arial, Helvetica, sans-serif;
+	width: 35%;
+	color: white;
+	font-size: 15px;
+}
+i {
+	color: #e9ff70;
+	margin-right: 20px;
+}
+#upload {
+	display: flex;
+}
+#file-upload_button {
+	cursor: pointer;
+}
+
+#explaination {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 20px;
+	width: 300px;
+	color: #e9ff70;
+}

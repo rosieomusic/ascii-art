@@ -122,7 +122,7 @@ function handleSlider() {
 image1.onload = function initialize() {
 	//console.log('Image loaded: ', image1.src);
 	//console.log('Image dimiensions: ', image1.width, image1.height);
-	const maxDimension = 550;
+	const maxDimension = 500;
 
 	let scale = Math.min(
 		maxDimension / image1.width,

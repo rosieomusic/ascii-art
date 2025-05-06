@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE-edge"
+		/>
+		<title>Pixels</title>
+		<link
+			rel="stylesheet"
+			href="styles.css"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+		/>
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Domine:wght@400..700&family=Roboto+Mono:wght@100..700&family=Rubik:wght@800&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/56e0d45a0e.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="canvas1"></canvas>
+			<div class="controls">
+				<label
+					for="resolution"
+					id="resolutionLabel"
+					>Resolution 5 px</label
+				>
+				<input
+					type="range"
+					id="resolution"
+					name="resolution"
+					min="1"
+					max="20"
+					value="3"
+				/>
+			</div>
+			<br />
+
+			<div id="upload">
+				<i class="fa-regular fa-folder-open"></i>
+				<input
+					type="file"
+					id="imageUpload"
+					accept="image/*"
+				/>
+				<pre id="ascii-output"></pre>
+				<canvas
+					id="canvas2"
+					style="display: none"
+				></canvas>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -120,32 +120,29 @@ function handleSlider() {
 	}
 }
 image1.onload = function initialize() {
-	//console.log('Image loaded: ', image1.src);
-	//console.log('Image dimiensions: ', image1.width, image1.height);
-	const maxDimension = 550;
-
+	// Calculate scaling based on maxDimension
 	let scale = Math.min(
 		maxDimension / image1.width,
 		maxDimension / image1.height,
 		1
 	);
 
+	// Apply scaled width/height to canvas
 	const scaledWidth = image1.width * scale;
 	const scaledHeight = image1.height * scale;
 	canvas.width = scaledWidth;
 	canvas.height = scaledHeight;
 
+	// Draw the scaled image into the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.drawImage(image1, 0, 0, scaledWidth, scaledHeight);
 
+	// Pass the scaled dimensions to AsciiEffect
 	effect = new AsciiEffect(ctx, scaledWidth, scaledHeight);
-	//effect.draw(parseInt(inputSlider.value));
-
-	const base64Image = canvas.toDataURL(image1);
-	//console.log('Base64 image:', base64Image);
 
 	handleSlider();
 };
+
 const string =
 	'$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,"^`';
 

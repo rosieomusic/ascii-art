@@ -109,16 +109,22 @@ class AsciiEffect {
 }
 let effect;
 function handleSlider() {
-	//console.log('Slider value: ', inputSlider.value);
-	if (inputSlider.value == 1) {
+	const maxSlider = parseInt(inputSlider.max); // e.g., 20
+	const minSlider = parseInt(inputSlider.min); // e.g., 1
+	const currentValue = parseInt(inputSlider.value);
+
+	const invertedValue = maxSlider - currentValue + minSlider; // reverse scale
+
+	if (currentValue == minSlider) {
 		inputLabel.innerHTML = 'Original Image';
 		ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
 	} else {
-		inputLabel.innerHTML = 'Resolution: ' + inputSlider.value + ' px';
-		ctx.font = parseInt(inputSlider.value) * 2 + 'px Courier New';
-		effect.draw(parseInt(inputSlider.value));
+		inputLabel.innerHTML = 'Resolution: ' + invertedValue + ' px';
+		ctx.font = invertedValue * 2 + 'px Courier New';
+		effect.draw(invertedValue);
 	}
 }
+
 image1.onload = function initialize() {
 	//console.log('Image loaded: ', image1.src);
 	//console.log('Image dimiensions: ', image1.width, image1.height);
