@@ -8,7 +8,7 @@ body {
 }
 .big-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	padding: 50px;
@@ -67,9 +67,9 @@ i {
 	color: #e9ff70;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768) {
 	.big-container {
-		flex-direction: row;
+		flex-direction: column;
 	}
 	#canvas1 {
 		border: 5px solid white;

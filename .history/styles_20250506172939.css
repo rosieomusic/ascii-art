@@ -67,17 +67,8 @@ i {
 	color: #e9ff70;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1068) {
 	.big-container {
 		flex-direction: row;
-	}
-	#canvas1 {
-		border: 5px solid white;
-		width: 100%;
-		max-width: 100vw;
-		height: auto;
-	}
-	body {
-		font-size: 1rem;
 	}
 }

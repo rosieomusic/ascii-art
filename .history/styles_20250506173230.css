@@ -8,7 +8,7 @@ body {
 }
 .big-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	padding: 50px;
@@ -69,7 +69,7 @@ i {
 
 @media (min-width: 768px) {
 	.big-container {
-		flex-direction: row;
+		flex-direction: column;
 	}
 	#canvas1 {
 		border: 5px solid white;
