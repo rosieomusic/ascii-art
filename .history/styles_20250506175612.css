@@ -74,13 +74,13 @@ i {
 	.container {
 		padding: 10em;
 		width: 100%;
-		max-width: 400px;
+		max-width: 300px;
 	}
 	#canvas1 {
 		border: 5px solid white;
 		width: 100%;
 		padding: 10px;
-		max-width: 400px;
+		max-width: 500px;
 		height: auto;
 	}
 
